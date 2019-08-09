@@ -7,7 +7,7 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       cadenaConsulta: "",
-      cosa: ""
+      cosa: "perro"
     };
 
     this.handleChange = this.handleChange.bind(this);

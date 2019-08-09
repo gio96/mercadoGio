@@ -47,6 +47,7 @@ class Home extends React.Component {
       valorConsulta: ""
     };
     this.getProductsList = this.getProductsList.bind(this);
+    this.getProductsList();
   }
 
   getProductsList(event) {
@@ -63,7 +64,6 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <input onClick={this.getProductsList} type="button" value="Search" />
         <div className="container">
           <div className="row">
             {this.state.listProducts.map(products => (
