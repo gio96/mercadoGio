@@ -44,14 +44,16 @@ class Home extends React.Component {
     super(props);
     this.state = {
       listProducts: [],
-      valorConsulta: props.consulta
+      valorConsulta: ""
     };
     this.getProductsList = this.getProductsList.bind(this);
   }
 
   getProductsList(event) {
     axios
-      .get("https://api.mercadolibre.com/sites/MCO/search?q=ipod")
+      .get(
+        `https://api.mercadolibre.com/sites/MCO/search?q=${this.props.consulta}`
+      )
       .then(res => {
         this.setState({ listProducts: res.data.results });
       })
