@@ -1,0 +1,61 @@
+/* Design inspiration:  https://dribbble.com/shots/1978243-Latest-News */
+.card {
+  width: 280px;
+  display: block;
+  margin: 60px auto;
+  /*box-shadow: 1px 2px 20px 14px #332f2c;*/
+  transition: 0.25s;
+}
+.card:hover {
+  box-shadow: 10px 5px 40px 20px #9c9c9c;
+  cursor: pointer;
+}
+.card:hover .button-primary {
+  transform: translate(10px, 0);
+}
+.card-header {
+  height: 220px;
+  width: 100%;
+  padding: 15px;
+  width: 100%;
+  background-size: cover;
+  color: #fff;
+}
+.card-header--title {
+  text-transform: uppercase;
+  margin: 0;
+}
+.card-body {
+  padding: 15px;
+  background-color: #fff;
+  width: 100%;
+}
+.date {
+  font-size: 11px;
+  font-weight: 600;
+  color: grey;
+}
+.body-content {
+  padding-bottom: 40px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.button-primary {
+  border: none;
+  box-shadow: none;
+  font-family: inherit;
+  background-color: transparent;
+  color: #341cac;
+  font-size: 15px;
+  transition: 0.25s;
+}
+.button-primary i {
+  padding-right: 4px;
+}
+.designer-link {
+  color: #fff;
+  text-align: center;
+  fon-size: 12px;
+  text-decoration: none;
+  display: block;
+}
