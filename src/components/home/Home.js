@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
+import SearchBar from "../search/SearchBar";
 
 class CardHeader extends React.Component {
   render() {
@@ -46,24 +47,24 @@ class Home extends React.Component {
       listProducts: [],
       valorConsulta: ""
     };
-    this.getProductsList = this.getProductsList.bind(this);
-    this.getProductsList();
+    //this.getProductsList = this.getProductsList.bind(this);
+
+    //this.getProductsList(this.props.consulta);
   }
 
-  getProductsList(event) {
+  getProductsList = dato => {
     axios
-      .get(
-        `https://api.mercadolibre.com/sites/MCO/search?q=${this.props.consulta}`
-      )
+      .get(`https://api.mercadolibre.com/sites/MCO/search?q=${dato}`)
       .then(res => {
         this.setState({ listProducts: res.data.results });
       })
       .catch(err => console.log(err));
-  }
+  };
 
   render() {
     return (
       <div>
+        <SearchBar getProductsList={this.getProductsList} />
         <div className="container">
           <div className="row">
             {this.state.listProducts.map(products => (

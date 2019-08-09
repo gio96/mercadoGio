@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "./SearchBar.css";
-import Home from "../home/Home";
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       cadenaConsulta: "",
-      cosa: "perro"
+      datoAEnviar: "perro"
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
-  handleChange(event) {
-    this.setState({ cadenaConsulta: event.target.value });
+  handleSubmit() {
+    this.props.getProductsList(this.state.cadenaConsulta);
   }
 
-  handleSubmit(event) {
-    console.log(this.state.cadenaConsulta);
-    this.setState({ cosa: this.state.cadenaConsulta });
+  handleChange(event) {
+    this.setState({ cadenaConsulta: event.target.value });
   }
 
   render() {
@@ -28,8 +26,8 @@ class SearchBar extends React.Component {
         <form id="search-form_3">
           <input
             type="text"
-            value={this.state.value}
             onChange={this.handleChange}
+            value={this.state.value}
             className="search_3"
           />
           <input
@@ -39,7 +37,6 @@ class SearchBar extends React.Component {
             value="Search"
           />
         </form>
-        <Home consulta={this.state.cosa} />
       </div>
     );
   }

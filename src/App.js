@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import SearchBar from "../src/components/search/SearchBar";
+import Home from "../src/components/home/Home";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         rel="stylesheet"
       />
       <h1>Giovanny MercadoLibre</h1>
-      <SearchBar />
+      <Home />
     </div>
   );
 }
