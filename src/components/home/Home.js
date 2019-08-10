@@ -34,6 +34,7 @@ class CardBody extends React.Component {
       <div className="card-body">
         <h2>${this.props.title}</h2>
         <p className="body-content">{this.props.text}</p>
+        <p className="body-content">Vendedor: {this.props.seller}</p>
         <Button />
       </div>
     );
@@ -45,19 +46,27 @@ class Home extends React.Component {
     super(props);
     this.state = {
       listProducts: [],
-      valorConsulta: ""
+      listSeller: []
     };
-    //this.getProductsList = this.getProductsList.bind(this);
-
-    //this.getProductsList(this.props.consulta);
   }
 
   getProductsList = dato => {
+    var listaEnvio = [];
     axios
       .get(`https://api.mercadolibre.com/sites/MCO/search?q=${dato}`)
       .then(res => {
         this.setState({ listProducts: res.data.results });
       })
+      .then(buscar => {
+        this.state.listProducts.map(product => {
+          axios
+            .get(`https://api.mercadolibre.com/users/${product.seller.id}`)
+            .then(seller => {
+              listaEnvio.push(seller.data.nickname);
+            });
+        });
+      })
+      .then(console.log(listaEnvio))
       .catch(err => console.log(err));
   };
 
@@ -75,6 +84,8 @@ class Home extends React.Component {
                     key={products.id}
                     title={products.price.toLocaleString()}
                     text={products.title}
+                    //seller={products.seller.id}
+                    seller={this.state.listSeller}
                   />
                 </article>
               </div>
